@@ -10,7 +10,7 @@
     "serve:watch": "nodemon dist/index.js",
     "build": "tsc",
     "build:watch": "tsc -w",
-    "teste": "npx jest"
+    "test": "npx jest"
   },
   "repository": {
     "type": "git",
