@@ -7,4 +7,4 @@ const SquareMetersValueSchema: Schema = new Schema({
     Value: { type: Schema.Types.Decimal128, required: true }
 });
 
-export const SquareMetersValue: Model<ISquareMetersValue> = model('squareMetersValues', SquareMetersValueSchema, "squareMetersValue");
+export const SquareMetersValue: Model<ISquareMetersValue> = model('SquareMetersValues', SquareMetersValueSchema, "squareMetersValue");
