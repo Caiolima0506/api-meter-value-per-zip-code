@@ -2,10 +2,10 @@ import  mongoose from "mongoose";
 import request from 'supertest';
 import { Server } from '../src/index';
 
-describe('Teste de integração da rota /valorImmobile/squareMeters', () => {
+describe('Teste de integração da rota /PropertyValue/SquareMeters', () => {
 
-  it('GET /valorImmobile/squareMeters', async () =>{
-    const res = await request(Server).get('/valorImmobile/squareMeters?cep=13025005')
+  it('GET /PropertyValue/SquareMeters', async () =>{
+    const res = await request(Server).get('/PropertyValue/SquareMeters?cep=13025005')
     .expect(200)
     .expect('Content-Type', /json/)
     .expect('Content-Length', '32').then(response => {
