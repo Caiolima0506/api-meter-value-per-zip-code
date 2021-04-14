@@ -9,19 +9,6 @@
             "url": "https://opensource.org/licenses/MIT"
         }
     },
-    "definitions": {
-        "ValueMeter": {
-            "type": "object",
-            "properties": {
-                "Cep": {
-                    "type": "string"
-                },
-                "Value": {
-                    "type": "decimal"
-                }
-            }
-        }
-    },
     "paths": {
         "/valorImmobile/squareMeters": {
             "get": {
@@ -50,6 +37,19 @@
                     "schema": {
                         "$ref": "#/definitions/ValueMeter"
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ValueMeter": {
+            "type": "object",
+            "properties": {
+                "Cep": {
+                    "type": "string"
+                },
+                "Value": {
+                    "type": "decimal"
                 }
             }
         }

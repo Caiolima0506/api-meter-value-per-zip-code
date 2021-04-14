@@ -20,6 +20,8 @@ export class JsonConfig  {
     
                 resolve(resultConfigMongoDb);
 
+            }).catch((err)=>{
+                return reject(err);
             });
 
         })
@@ -33,28 +35,22 @@ export class JsonConfig  {
 
         return new Promise((resolve, reject)=>{
 
-            try { 
+            fs.readFile("appsettings.json" , "utf8", function(err, data){
 
-                fs.readFile("appsettings.json" , "utf8", function(err, data){
+                
+                if(err){
 
-                    if(err){
-                        console.log(err)
-                        return console.log("Erro ao ler arquivo");
-                    }
-                    
-                    var jsonData = JSON.parse(data);
-
-                    resolve(jsonData);
+                    console.log('[ERROR] Could not load "appsettings.json"');
+                    return reject(err);
         
-                });
+                }
+                
+                var jsonData = JSON.parse(data);
 
-            } catch (e) {
-
-                console.log(e)
-                console.log('[ERROR] Could not load "appsettings.json"');
-
-                reject(e);
-            }
+                resolve(jsonData);
+    
+            });
+         
         })
 
 

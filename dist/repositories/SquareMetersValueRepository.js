@@ -10,12 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SquareMetersValueRepository = void 0;
-const squareMetersValue_model_1 = require("../domain/models/squareMetersValue.model");
+const SquareMetersValue_model_1 = require("../domain/models/SquareMetersValue.model");
 class SquareMetersValueRepository {
     GetSquareMetersValue(cepParam) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => {
-                squareMetersValue_model_1.SquareMetersValue.findOne({ "CEP": cepParam }, { _id: 0 }).then((result) => {
+                SquareMetersValue_model_1.SquareMetersValue.findOne({ "CEP": cepParam }, { _id: 0 }).then((result) => {
                     let returnResult = null;
                     if (result) {
                         returnResult = {

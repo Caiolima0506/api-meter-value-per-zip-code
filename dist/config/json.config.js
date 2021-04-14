@@ -43,6 +43,8 @@ class JsonConfig {
                 this.readFile().then((jsonData) => {
                     resultConfigMongoDb.DB_URI = jsonData.dbConfig.DB_URI;
                     resolve(resultConfigMongoDb);
+                }).catch((err) => {
+                    return reject(err);
                 });
             });
         });
@@ -54,21 +56,14 @@ class JsonConfig {
     readFile() {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => {
-                try {
-                    fs.readFile("appsettings.json", "utf8", function (err, data) {
-                        if (err) {
-                            console.log(err);
-                            return console.log("Erro ao ler arquivo");
-                        }
-                        var jsonData = JSON.parse(data);
-                        resolve(jsonData);
-                    });
-                }
-                catch (e) {
-                    console.log(e);
-                    console.log('[ERROR] Could not load "appsettings.json"');
-                    reject(e);
-                }
+                fs.readFile("appsettings.json", "utf8", function (err, data) {
+                    if (err) {
+                        console.log('[ERROR] Could not load "appsettings.json"');
+                        return reject(err);
+                    }
+                    var jsonData = JSON.parse(data);
+                    resolve(jsonData);
+                });
             });
         });
     }

@@ -11,7 +11,7 @@ router.get('/squareMeters', async (req: Request, res: Response) => {
     let cep = Number(req.query.cep);
 
     valueMeterService.GetValue(cep).then((result:ResultValue)=>{
-
+        
         if(!result){
             return res.status(404).send({msg:"não existem valores cadastrados para este CEP"})
         }

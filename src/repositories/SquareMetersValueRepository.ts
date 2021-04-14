@@ -1,5 +1,6 @@
+import { ProcessingInternalError } from "../domain/helpers/GlobalErrors";
 import { ResultValue } from "../domain/helpers/ResultValue";
-import { SquareMetersValue } from "../domain/models/squareMetersValue.model";
+import { SquareMetersValue } from "../domain/models/SquareMetersValue.model";
 
 export class SquareMetersValueRepository {
 
@@ -9,7 +10,7 @@ export class SquareMetersValueRepository {
         return new Promise<ResultValue>((resolve, reject)=>{
 
             SquareMetersValue.findOne({"CEP" : cepParam}, { _id: 0 }).then((result)=>{
-                
+
                 let returnResult : ResultValue = null;
 
                 if(result){
@@ -25,7 +26,9 @@ export class SquareMetersValueRepository {
 
             }).catch((e)=>{
 
-               return reject(e);
+                return reject(e);
+                
+               
             });
         }) 
     }

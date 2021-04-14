@@ -6,6 +6,11 @@ import * as swaggerDocument from '../src/swagger.json'
 
 import { ValueMeterController } from './controllers/ValueMeterController';
 
+enum ExitStatus {
+    Failure = 1,
+    Success = 0,
+  }
+
 const app: express.Application = express();
 
 const database = new Database();
@@ -26,6 +31,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
  */
 app.use('/swagger', swaggerUi.serve,swaggerUi.setup(swaggerDocument));
 app.use('/valorImmobile', ValueMeterController);
+
+process.on('unhandledRejection', (reason, promise) => {
+
+    throw reason;
+});
+
+process.on('uncaughtException', (error) => {
+   
+    process.exit(ExitStatus.Failure);
+});
 
 
 const port = process.env.PORT || 3002;
