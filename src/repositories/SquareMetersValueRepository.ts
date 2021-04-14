@@ -1,4 +1,4 @@
-import { ProcessingInternalError } from "../domain/helpers/GlobalErrors";
+
 import { ResultValue } from "../domain/helpers/ResultValue";
 import { SquareMetersValue } from "../domain/models/SquareMetersValue.model";
 
@@ -7,7 +7,7 @@ export class SquareMetersValueRepository {
     
     public async GetSquareMetersValue(cepParam:number){
 
-        return new Promise<ResultValue>((resolve, reject)=>{
+        return new Promise<ResultValue>((resolve, reject)=> {
 
             SquareMetersValue.findOne({"CEP" : cepParam}, { _id: 0 }).then((result)=>{
 
