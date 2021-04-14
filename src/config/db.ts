@@ -6,7 +6,7 @@ class Database {
 
     private DB_CONNECTION;
 
-    constructor() { }
+    constructor() { } 
 
     /**
      * Criar a conecxão com o mongo levando em conta a variável de comunicação
