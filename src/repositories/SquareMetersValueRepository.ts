@@ -1,6 +1,6 @@
 
 import { ResultValue } from "../domain/helpers/ResultValue";
-import { SquareMetersValue } from "../domain/models/SquareMetersValue.model";
+import { SquareMetersValue } from "../domain/models/squareMetersValue.model";
 
 export class SquareMetersValueRepository {
 
