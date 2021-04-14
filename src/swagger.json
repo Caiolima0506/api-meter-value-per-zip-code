@@ -11,12 +11,12 @@
         }
     },
     "paths": {
-        "/valorImmobile/squareMeters": {
+        "/PropertyValue/SquareMeters": {
             "get": {
                 "tags": [
                     "Valor do Metro Quadrado"
                 ],
-                "summary": "Pega o valor do metro quadrado atraves do CEP.",
+                "summary": "Retorna o valor do metro quadrado através do CEP.",
                 "responses": {
                     "200": {
                         "description": "OK"

@@ -6,7 +6,7 @@ const router: Router = Router();
 
 const valueMeterService = new ValueMeterService();
 
-router.get('/squareMeters', async (req: Request, res: Response) => {
+router.get('/SquareMeters', async (req: Request, res: Response) => {
 
     let cep = Number(req.query.cep);
 

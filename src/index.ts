@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
  * Rotas para Controllers
  */
 app.use('/swagger', swaggerUi.serve,swaggerUi.setup(swaggerDocument));
-app.use('/valorImmobile', ValueMeterController);
+app.use('/PropertyValue', ValueMeterController);
 
 process.on('unhandledRejection', (reason, promise) => {
 
