@@ -6,9 +6,11 @@ import * as swaggerDocument from '../src/swagger.json'
 
 import { ValueMeterController } from './controllers/ValueMeterController';
 
-export const app: express.Application = express();
+const app: express.Application = express();
 
 const database = new Database();
+
+let server;
 
 app.use(bodyParser.json());
 
@@ -26,9 +28,13 @@ app.use('/swagger', swaggerUi.serve,swaggerUi.setup(swaggerDocument));
 app.use('/valorImmobile', ValueMeterController);
 
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3002;
 
-app.listen(port, () => {
+export const Server = app.listen(port, () => {
 
     console.log(`Listening at http://localhost:${port}/`);
 });
+
+
+
+

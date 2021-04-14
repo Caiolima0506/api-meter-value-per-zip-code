@@ -22,26 +22,27 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.app = void 0;
 const express_1 = __importDefault(require("express"));
 const bodyParser = __importStar(require("body-parser"));
 const db_1 = __importDefault(require("./config/db"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const swaggerDocument = __importStar(require("../src/swagger.json"));
 const ValueMeterController_1 = require("./controllers/ValueMeterController");
-const app = express_1.default();
+exports.app = express_1.default();
 const database = new db_1.default();
-app.use(bodyParser.json());
+exports.app.use(bodyParser.json());
 /**
  * Iniciar a Conexão com MongoDb
  */
 database.createConnection();
-app.use(bodyParser.urlencoded({ extended: false }));
+exports.app.use(bodyParser.urlencoded({ extended: false }));
 /**
  * Rotas para Controllers
  */
-app.use('/swagger', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerDocument));
-app.use('/valorImmobile', ValueMeterController_1.ValueMeterController);
-const port = process.env.PORT || 3001;
-app.listen(port, () => {
+exports.app.use('/swagger', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerDocument));
+exports.app.use('/valorImmobile', ValueMeterController_1.ValueMeterController);
+const port = process.env.PORT || 3002;
+exports.app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}/`);
 });
