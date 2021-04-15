@@ -1,4 +1,7 @@
-# REST API 
+# REST API
+ 
+API Online
+    https://api-meter-value-per-zip-code.herokuapp.com/
 
 CEPs Disponíceis para consulta:
 
@@ -32,19 +35,16 @@ Campinas-SP
 ## Executar Api Dev
 
     npm run dev
-
-# REST API
-
-A Collection do Postman se encontra na raiz do projeto com o nome `collectionPostman.json`
+## Executar Api Docker/Nodemon
+    docker-compose up --build
 
 ## Documentação API - Swagger
-
 
 ### Request
 
 `GET /swagger`
 
-    http://localhost:3002/swagger
+    http://localhost:3001/swagger
 
 
 ## Get Valor do metro quadrado pelo CEP 
@@ -55,16 +55,15 @@ Param : cep : string
 
 `GET /valorImmobile/squareMeters`
 
-     'Accept: application/json' http://localhost:3002/valorImmobile/squareMeters?cep="<CEP>"
+     'Accept: application/json' http://localhost:3001/valorImmobile/squareMeters?cep=<CEP>
 
 ### Response
 
     HTTP/1.1 200 OK
-    Date: Thu, 24 Apr 2021 12:36:30 GMT
+    Date: Thu,15 Apr 2021 14:48:57 GMT
     Status: 200 OK
-    Connection: close
-    Content-Type: application/json
-    Content-Length: 2
+    Content-Type: application/json; charset=utf-8
+    Content-Length: 32
 
-    []
+    {"Cep": <CEP>,  "Value": <Valor>}
 

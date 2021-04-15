@@ -1,12 +1,22 @@
 import { Router, Request, Response } from 'express';
 import { ResultValue } from '../domain/helpers/ResultValue';
 import { ValueMeterService } from '../domain/service/ValueMeterService';
+import { query, validationResult } from 'express-validator';
 
 const router: Router = Router();
 
 const valueMeterService = new ValueMeterService();
 
-router.get('/SquareMeters', async (req: Request, res: Response) => {
+router.get('/SquareMeters', query('cep').isNumeric(), async (req: Request, res: Response) => {
+
+
+    //validações de request
+    const schemaErrors = validationResult(req);
+
+    if (!schemaErrors.isEmpty()) {
+        
+        return res.status(403).send(schemaErrors.array());
+    }
 
     let cep = Number(req.query.cep);
 
