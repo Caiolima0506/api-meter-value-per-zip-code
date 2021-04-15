@@ -1,12 +1,9 @@
-FROM node:alpine
+FROM node:14 as base
 
-WORKDIR /usr/app
+WORKDIR /home/node/app
 
 COPY package*.json ./
-RUN npm install
+
+RUN npm i
 
 COPY . .
-
-EXPOSE 3001
-
-CMD ["npm", "start"]

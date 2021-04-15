@@ -14,24 +14,6 @@ enum ExitStatus {
 
 const app: express.Application = express();
 
-const options: cors.CorsOptions = {
-    allowedHeaders: [
-      'Origin',
-      'X-Requested-With',
-      'Content-Type',
-      'Accept',
-      'X-Access-Token',
-    ],
-    credentials: true,
-    methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-    origin: '*',
-    preflightContinue: false,
-  };
-
-app.use(cors(options));
-
-app.options('*', cors(options));
-
 const database = new Database();
 
 app.use(bodyParser.json());
@@ -43,9 +25,17 @@ database.createConnection();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-/**
- * Rotas para Controllers
- */
+const allowedOrigins = ['https://api-calculate-property-value.herokuapp.com','http://localhost:3000'];
+
+const options: cors.CorsOptions = {
+    methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+    origin: allowedOrigins,
+  };
+
+app.use(cors(options));
+
+app.use(express.json());
+
 app.use('/swagger', swaggerUi.serve,swaggerUi.setup(swaggerDocument));
 app.use('/PropertyValue', ValueMeterController);
 
