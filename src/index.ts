@@ -25,7 +25,7 @@ database.createConnection();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const allowedOrigins = ['https://api-calculate-property-value.herokuapp.com','http://localhost:3000'];
+const allowedOrigins = ['*'];
 
 const options: cors.CorsOptions = {
     methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
