@@ -7,4 +7,4 @@ const SquareMetersValueSchema = new mongoose_1.Schema({
     CEP: { type: Number, required: true },
     Value: { type: mongoose_1.Schema.Types.Decimal128, required: true }
 });
-exports.SquareMetersValue = mongoose_1.model('squareMetersValues', SquareMetersValueSchema, "squareMetersValue");
+exports.SquareMetersValue = mongoose_1.model('SquareMetersValues', SquareMetersValueSchema, "squareMetersValue");

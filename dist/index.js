@@ -29,14 +29,29 @@ const db_1 = __importDefault(require("./config/db"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const swaggerDocument = __importStar(require("../src/swagger.json"));
 const ValueMeterController_1 = require("./controllers/ValueMeterController");
+const cors_1 = __importDefault(require("cors"));
 var ExitStatus;
 (function (ExitStatus) {
     ExitStatus[ExitStatus["Failure"] = 1] = "Failure";
     ExitStatus[ExitStatus["Success"] = 0] = "Success";
 })(ExitStatus || (ExitStatus = {}));
 const app = express_1.default();
+const options = {
+    allowedHeaders: [
+        'Origin',
+        'X-Requested-With',
+        'Content-Type',
+        'Accept',
+        'X-Access-Token',
+    ],
+    credentials: true,
+    methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+    origin: '*',
+    preflightContinue: false,
+};
+app.use(cors_1.default(options));
+app.options('*', cors_1.default(options));
 const database = new db_1.default();
-let server;
 app.use(bodyParser.json());
 /**
  * Iniciar a Conexão com MongoDb
@@ -47,14 +62,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
  * Rotas para Controllers
  */
 app.use('/swagger', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerDocument));
-app.use('/valorImmobile', ValueMeterController_1.ValueMeterController);
+app.use('/PropertyValue', ValueMeterController_1.ValueMeterController);
 process.on('unhandledRejection', (reason, promise) => {
     throw reason;
 });
 process.on('uncaughtException', (error) => {
     process.exit(ExitStatus.Failure);
 });
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3001;
 exports.Server = app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}/`);
 });

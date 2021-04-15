@@ -5,6 +5,7 @@ import swaggerUi from 'swagger-ui-express';
 import * as swaggerDocument from '../src/swagger.json'
 
 import { ValueMeterController } from './controllers/ValueMeterController';
+import cors from 'cors';
 
 enum ExitStatus {
     Failure = 1,
@@ -13,9 +14,25 @@ enum ExitStatus {
 
 const app: express.Application = express();
 
-const database = new Database();
+const options: cors.CorsOptions = {
+    allowedHeaders: [
+      'Origin',
+      'X-Requested-With',
+      'Content-Type',
+      'Accept',
+      'X-Access-Token',
+    ],
+    credentials: true,
+    methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+    origin: '*',
+    preflightContinue: false,
+  };
 
-let server;
+app.use(cors(options));
+
+app.options('*', cors(options));
+
+const database = new Database();
 
 app.use(bodyParser.json());
 
@@ -43,7 +60,7 @@ process.on('uncaughtException', (error) => {
 });
 
 
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3001;
 
 export const Server = app.listen(port, () => {
 

@@ -4,7 +4,7 @@
     "info": {
         "version": "1.0.0",
         "title": "api-meter-value-per-zip-code",
-        "description": "Api que retorna os valor do M² de acordo com o CEP.",
+        "description": "Api que retorna o valor do M² de acordo com o CEP.",
         "license": {
             "name": "MIT",
             "url": "https://opensource.org/licenses/MIT"

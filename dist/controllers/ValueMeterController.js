@@ -14,7 +14,7 @@ const express_1 = require("express");
 const ValueMeterService_1 = require("../domain/service/ValueMeterService");
 const router = express_1.Router();
 const valueMeterService = new ValueMeterService_1.ValueMeterService();
-router.get('/squareMeters', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/SquareMeters', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let cep = Number(req.query.cep);
     valueMeterService.GetValue(cep).then((result) => {
         if (!result) {
